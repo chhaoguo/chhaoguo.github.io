@@ -51,6 +51,36 @@
   header.hero{
     margin-bottom:48px;
   }
+  .hero-inner{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:28px;
+  }
+  .hero-photo{
+    flex:0 0 auto;
+    text-align:center;
+  }
+  .hero-photo img{
+    width:180px;
+    height:180px;
+    object-fit:cover;
+    object-position:top center;
+    border-radius:50%;
+    border:1px solid var(--rule);
+    display:block;
+    cursor:pointer;
+    transition:opacity 0.15s ease;
+  }
+  .hero-photo img:hover{
+    opacity:0.85;
+  }
+  .hero-photo span{
+    display:block;
+    margin-top:8px;
+    font-size:0.78rem;
+    color:var(--text-soft);
+  }
   h1{
     font-family:var(--serif);
     font-weight:700;
@@ -241,6 +271,8 @@
     h1{ font-size:1.9rem; }
     .wrap{ padding:44px 18px 72px; }
     .exp-head{ flex-direction:column; gap:2px; }
+    .hero-inner{ flex-direction:column-reverse; align-items:center; text-align:center; }
+    .contact-row{ justify-content:center; }
   }
 </style>
 </head>
@@ -248,13 +280,23 @@
 <div class="wrap">
 
   <header class="hero">
-    <h1>Chenghao Guo</h1>
-    <p class="role">Ph.D., Electrical Engineering and Computer Science — MIT</p>
-    <div class="contact-row">
-      <a href="mailto:chenghao@mit.edu">chenghao@mit.edu</a>
-      <a href="https://sites.mit.edu/chenghao" target="_blank" rel="noopener">sites.mit.edu/chenghao</a>
-      <a href="https://github.com/calcudimen" target="_blank" rel="noopener">github.com/calcudimen</a>
-      <a href="assets/Chenghao_Guo_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    <div class="hero-inner">
+      <div>
+        <h1>Chenghao Guo</h1>
+        <p class="role">Ph.D., Electrical Engineering and Computer Science — MIT</p>
+        <div class="contact-row">
+          <a href="mailto:chenghao@mit.edu">chenghao@mit.edu</a>
+          <a href="https://sites.mit.edu/chenghao" target="_blank" rel="noopener">sites.mit.edu/chenghao</a>
+          <a href="https://github.com/calcudimen" target="_blank" rel="noopener">github.com/calcudimen</a>
+          <a href="assets/Chenghao_Guo_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <a href="assets/chenghao-and-fiancee.jpg" target="_blank" rel="noopener">
+          <img src="assets/chenghao-and-fiancee.jpg" alt="Chenghao Guo and his fiancée">
+        </a>
+        <span>With my fiancée</span>
+      </div>
     </div>
     <nav class="tabs">
       <a href="#about">About</a>
@@ -287,6 +329,14 @@
   <section id="publications">
     <h2>Publications &amp; Preprints</h2>
     <ul class="pub-list">
+
+      <li>
+        <p class="pub-title">Achievability of Heterogeneous Hypergraph Recovery from its Graph Projection
+          <a class="pub-link" href="https://arxiv.org/abs/2603.01268" target="_blank" rel="noopener">[arXiv]</a>
+        </p>
+        <p class="pub-authors">Alexander Morgan, <span class="me">Chenghao Guo</span></p>
+        <p class="pub-venue">Preprint, 2026</p>
+      </li>
 
       <li>
         <p class="pub-title">Partial and Exact Recovery of a Random Hypergraph from its Graph Projection
