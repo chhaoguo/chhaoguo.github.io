@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chenghao Guo</title>
+<meta name="description" content="Chenghao Guo — PhD, Electrical Engineering and Computer Science, MIT. Research on average-case and smoothed complexity, high-dimensional statistics, and random graph theory.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbfaf8;
+    --bg-card:#ffffff;
+    --text:#1c1b19;
+    --text-soft:#5a564f;
+    --accent:#7a3b2e;
+    --accent-soft:#a8574a;
+    --rule:#e4e0d8;
+    --link:#7a3b2e;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --maxw: 760px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#161513;
+      --bg-card:#1d1c19;
+      --text:#eae7e0;
+      --text-soft:#a8a397;
+      --accent:#e0a58f;
+      --accent-soft:#c97c62;
+      --rule:#333029;
+      --link:#e0a58f;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:64px 24px 96px;
+  }
+  header.hero{
+    margin-bottom:48px;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:2.4rem;
+    margin:0 0 6px;
+    letter-spacing:-0.01em;
+  }
+  .role{
+    font-size:1.05rem;
+    color:var(--text-soft);
+    margin:0 0 20px;
+  }
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px 22px;
+    font-size:0.92rem;
+  }
+  .contact-row a{
+    color:var(--link);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .contact-row a:hover{
+    border-bottom-color:var(--link);
+  }
+  nav.tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 18px;
+    margin:28px 0 0;
+    padding-top:20px;
+    border-top:1px solid var(--rule);
+  }
+  nav.tabs a{
+    color:var(--text-soft);
+    text-decoration:none;
+    font-size:0.88rem;
+    font-weight:500;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+  }
+  nav.tabs a:hover{ color:var(--accent); }
+
+  section{
+    margin-bottom:52px;
+  }
+  section h2{
+    font-family:var(--serif);
+    font-size:1.3rem;
+    font-weight:600;
+    margin:0 0 18px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--rule);
+  }
+  p{
+    margin:0 0 14px;
+    font-size:0.98rem;
+  }
+  .tags{
+    font-size:0.88rem;
+    color:var(--text-soft);
+    margin-top:-4px;
+  }
+
+  .pub-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .pub-list li{
+    padding:16px 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .pub-list li:last-child{ border-bottom:none; }
+  .pub-title{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.02rem;
+    margin:0 0 5px;
+  }
+  .pub-authors{
+    font-size:0.9rem;
+    color:var(--text-soft);
+    margin:0 0 4px;
+  }
+  .pub-authors .me{
+    color:var(--text);
+    font-weight:600;
+  }
+  .pub-venue{
+    font-size:0.86rem;
+    color:var(--accent-soft);
+    font-style:italic;
+  }
+  .pub-link{
+    color:var(--link);
+    text-decoration:none;
+    font-size:0.86rem;
+    margin-left:8px;
+    white-space:nowrap;
+  }
+  .pub-link:hover{ text-decoration:underline; }
+
+  blockquote.abstract{
+    margin:0 0 18px;
+    padding:2px 0 2px 18px;
+    border-left:3px solid var(--rule);
+    color:var(--text-soft);
+    font-size:0.94rem;
+    font-style:italic;
+  }
+
+  table.simple{
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.94rem;
+  }
+  table.simple tr{
+    border-bottom:1px solid var(--rule);
+  }
+  table.simple tr:last-child{ border-bottom:none; }
+  table.simple td{
+    padding:9px 0;
+    vertical-align:top;
+  }
+  table.simple td.year{
+    color:var(--text-soft);
+    text-align:right;
+    width:100px;
+    white-space:nowrap;
+  }
+
+  .exp-item{
+    margin-bottom:16px;
+  }
+  .exp-item:last-child{ margin-bottom:0; }
+  .exp-head{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    font-weight:600;
+    font-size:0.98rem;
+  }
+  .exp-date{
+    color:var(--text-soft);
+    font-weight:400;
+    font-size:0.88rem;
+    white-space:nowrap;
+  }
+  .exp-sub{
+    color:var(--text-soft);
+    font-size:0.88rem;
+    margin:2px 0 6px;
+  }
+  ul.plain{
+    margin:0;
+    padding-left:1.1em;
+    font-size:0.92rem;
+    color:var(--text-soft);
+  }
+  ul.plain li{ margin-bottom:3px; }
+
+  .cv-btn{
+    display:inline-block;
+    padding:10px 20px;
+    border:1px solid var(--accent);
+    color:var(--accent);
+    text-decoration:none;
+    border-radius:4px;
+    font-size:0.92rem;
+    font-weight:500;
+  }
+  .cv-btn:hover{
+    background:var(--accent);
+    color:var(--bg-card);
+  }
+
+  footer{
+    color:var(--text-soft);
+    font-size:0.82rem;
+    text-align:center;
+    padding-top:28px;
+    border-top:1px solid var(--rule);
+  }
+
+  @media (max-width:480px){
+    h1{ font-size:1.9rem; }
+    .wrap{ padding:44px 18px 72px; }
+    .exp-head{ flex-direction:column; gap:2px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>Chenghao Guo</h1>
+    <p class="role">Ph.D., Electrical Engineering and Computer Science — MIT</p>
+    <div class="contact-row">
+      <a href="mailto:chenghao@mit.edu">chenghao@mit.edu</a>
+      <a href="https://sites.mit.edu/chenghao" target="_blank" rel="noopener">sites.mit.edu/chenghao</a>
+      <a href="https://github.com/calcudimen" target="_blank" rel="noopener">github.com/calcudimen</a>
+      <a href="assets/Chenghao_Guo_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    </div>
+    <nav class="tabs">
+      <a href="#about">About</a>
+      <a href="#publications">Publications</a>
+      <a href="#thesis">Thesis</a>
+      <a href="#experience">Research &amp; Teaching</a>
+      <a href="#honors">Honors</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      My research lies at the intersection of statistics and computer science. I am especially
+      interested in understanding statistical problems from a computational view — specifically,
+      the average-case and smoothed complexity of signal recovery and optimization problems.
+    </p>
+    <p class="tags">
+      Average-Case Complexity &middot; Smoothed Complexity &middot; Probability in High Dimension &middot;
+      Information Theory &middot; Random Graph Theory &middot; Markov Chains
+    </p>
+    <p>
+      I completed my Ph.D. (2022–2025) and M.Eng. (2020–2022) in EECS at MIT, advised by
+      <a href="https://www.mit.edu/~guy/" target="_blank" rel="noopener">Guy Bresler</a> and
+      <a href="http://people.lids.mit.edu/yp/homepage/" target="_blank" rel="noopener">Yury Polyanskiy</a>.
+      Before MIT, I studied computer science in the Yao Class at the Institute for Interdisciplinary
+      Information Sciences, Tsinghua University.
+    </p>
+  </section>
+
+  <section id="publications">
+    <h2>Publications &amp; Preprints</h2>
+    <ul class="pub-list">
+
+      <li>
+        <p class="pub-title">Partial and Exact Recovery of a Random Hypergraph from its Graph Projection
+          <a class="pub-link" href="https://arxiv.org/abs/2410.15093" target="_blank" rel="noopener">[arXiv]</a>
+        </p>
+        <p class="pub-authors">Guy Bresler, <span class="me">Chenghao Guo</span>, Yury Polyanskiy, Andrew Yao</p>
+        <p class="pub-venue">Conference on Learning Theory (COLT), 2025</p>
+      </li>
+
+      <li>
+        <p class="pub-title">Thresholds for Reconstruction of Random Hypergraphs From Graph Projections
+          <a class="pub-link" href="https://arxiv.org/abs/2402.03282" target="_blank" rel="noopener">[arXiv]</a>
+        </p>
+        <p class="pub-authors">Guy Bresler, <span class="me">Chenghao Guo</span>, Yury Polyanskiy</p>
+        <p class="pub-venue">Conference on Learning Theory (COLT), 2024</p>
+      </li>
+
+      <li>
+        <p class="pub-title">Smoothed Complexity of SWAP in Local Graph Partitioning
+          <a class="pub-link" href="https://arxiv.org/abs/2304.09217" target="_blank" rel="noopener">[arXiv]</a>
+        </p>
+        <p class="pub-authors">Xi Chen, <span class="me">Chenghao Guo</span>, Emmanouil V. Vlatakis-Gkaragkounis, Mihalis Yannakakis</p>
+        <p class="pub-venue">Symposium on Discrete Algorithms (SODA), 2024</p>
+      </li>
+
+      <li>
+        <p class="pub-title">Algorithmic Decorrelation and Planted Clique in Dependent Random Graphs: The Case of Extra Triangles
+          <a class="pub-link" href="https://arxiv.org/abs/2303.08842" target="_blank" rel="noopener">[arXiv]</a>
+        </p>
+        <p class="pub-authors">Guy Bresler, <span class="me">Chenghao Guo</span>, Yury Polyanskiy</p>
+        <p class="pub-venue">Symposium on Foundations of Computer Science (FOCS), 2023</p>
+      </li>
+
+      <li>
+        <p class="pub-title">Linear Programs with Polynomial Coefficients and Applications to 1D Cellular Automata
+          <a class="pub-link" href="https://arxiv.org/abs/2202.03426" target="_blank" rel="noopener">[arXiv]</a>
+        </p>
+        <p class="pub-authors">Guy Bresler, <span class="me">Chenghao Guo</span>, Yury Polyanskiy</p>
+        <p class="pub-venue">Preprint, 2022</p>
+      </li>
+
+      <li>
+        <p class="pub-title">Generalizing Complex Hypotheses on Product Distributions: Auctions, Prophet Inequalities, and Pandora's Problem
+          <a class="pub-link" href="https://arxiv.org/abs/2104.05869" target="_blank" rel="noopener">[arXiv]</a>
+        </p>
+        <p class="pub-authors"><span class="me">Chenghao Guo</span>, Zhiyi Huang, Zhihao Gavin Tang, Xinzhi Zhang</p>
+        <p class="pub-venue">Conference on Learning Theory (COLT), 2021</p>
+      </li>
+
+      <li>
+        <p class="pub-title">Smoothed Complexity of Local Max-Cut and Binary Max-CSP
+          <a class="pub-link" href="https://arxiv.org/abs/2005.03415" target="_blank" rel="noopener">[arXiv]</a>
+        </p>
+        <p class="pub-authors">Xi Chen, <span class="me">Chenghao Guo</span>, Emmanouil V. Vlatakis-Gkaragkounis, Mihalis Yannakakis, Xinzhi Zhang</p>
+        <p class="pub-venue">Symposium on the Theory of Computing (STOC), 2020</p>
+      </li>
+
+      <li>
+        <p class="pub-title">Settling the Sample Complexity of Single-parameter Revenue Maximization
+          <a class="pub-link" href="https://arxiv.org/abs/1809.03305" target="_blank" rel="noopener">[arXiv]</a>
+        </p>
+        <p class="pub-authors"><span class="me">Chenghao Guo</span>, Zhiyi Huang, Xinzhi Zhang</p>
+        <p class="pub-venue">Symposium on the Theory of Computing (STOC), 2019 &mdash; also in SIGecom Exchanges, Vol. 17.2</p>
+      </li>
+
+      <li>
+        <p class="pub-title">Decomposition of a Symmetric Multipartite Observable
+          <a class="pub-link" href="https://arxiv.org/abs/1810.02819" target="_blank" rel="noopener">[arXiv]</a>
+        </p>
+        <p class="pub-authors">You Zhou, <span class="me">Chenghao Guo</span>, Xiongfeng Ma <em>(joint first author with You Zhou)</em></p>
+        <p class="pub-venue">Physical Review A, May 2019</p>
+      </li>
+
+    </ul>
+  </section>
+
+  <section id="thesis">
+    <h2>Doctoral Thesis</h2>
+    <p class="pub-title" style="margin-bottom:8px;">Signal Recovery in Random Graphical Models with Local Dependencies</p>
+    <p class="pub-authors" style="margin-bottom:14px;">Chenghao Guo &middot; MIT, May 2026 &middot; Advisors: Guy Bresler, Yury Polyanskiy</p>
+    <blockquote class="abstract">
+      Community recovery and signal recovery in random graphical models aim to infer latent
+      structure from noisy relational data. Much of the classical theory is built on independent
+      random graph models, especially Erd&#337;s&ndash;R&eacute;nyi graphs and their planted variants. This
+      thesis studies recovery in random graphical models with local dependencies, using local
+      structure as a bridge between independent noise and globally constrained latent graph
+      models &mdash; developing algorithmic decorrelation maps and sharp thresholds for recovery from
+      graph projections of random hypergraphs.
+    </blockquote>
+    <a class="cv-btn" href="assets/Chenghao_Guo_PhD_Thesis.pdf" target="_blank" rel="noopener">Download full thesis (PDF)</a>
+  </section>
+
+  <section id="experience">
+    <h2>Research Experience</h2>
+
+    <div class="exp-item">
+      <div class="exp-head">Computational Statistics and Information Theory, MIT <span class="exp-date">June 2020 – present</span></div>
+      <div class="exp-sub">Laboratory for Information and Decision Systems (LIDS)</div>
+      <ul class="plain">
+        <li>Broadcasting of information on grids</li>
+        <li>Average-case complexity of signal recovery on graphical structures</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-head">Machine Learning, Google <span class="exp-date">August 2023 – present</span></div>
+      <div class="exp-sub">Student Researcher</div>
+      <ul class="plain">
+        <li>Theoretical foundations of distillation in learning tasks</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-head">Algorithm and Complexity, Columbia University <span class="exp-date">Feb 2019 – present</span></div>
+      <ul class="plain">
+        <li>Smoothed analysis of local max-cut and other optimization problems</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-head">Algorithmic Game Theory, University of Hong Kong <span class="exp-date">July 2018 – June 2020</span></div>
+      <ul class="plain">
+        <li>Optimal sample complexity of mechanism design</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-head">Quantum Information, Tsinghua University <span class="exp-date">Nov 2016 – Aug 2018</span></div>
+      <ul class="plain">
+        <li>Protocols for state measurement of quantum symmetric states</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <div class="exp-item">
+      <div class="exp-head">Machine Learning (6.7900) <span class="exp-date">Fall 2025</span></div>
+      <ul class="plain">
+        <li>Introductory graduate machine learning course, ~250 students</li>
+        <li>Office hours, organizing homework and exams, coordinating graders</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div class="exp-head">Algorithms for Inference (6.7810) <span class="exp-date">Fall 2023</span></div>
+      <div class="exp-sub">Review rating: 6.8 / 7.0</div>
+      <ul class="plain">
+        <li>Graduate course on algorithms and theoretical foundations of inference</li>
+        <li>Recitations, office hours, problem sets, exam design</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <table class="simple">
+      <tr>
+        <td>
+          <strong>Massachusetts Institute of Technology</strong><br>
+          Ph.D., Electrical Engineering and Computer Science<br>
+          <span class="pub-authors">Advisors: Guy Bresler, Yury Polyanskiy</span>
+        </td>
+        <td class="year">2022–2025</td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Massachusetts Institute of Technology</strong><br>
+          M.Eng., Electrical Engineering and Computer Science<br>
+          <span class="pub-authors">Advisors: Guy Bresler, Yury Polyanskiy</span>
+        </td>
+        <td class="year">2020–2022</td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Tsinghua University</strong><br>
+          B.Eng., Computer Science &mdash; Institute for Interdisciplinary Information Sciences (Yao Class)
+        </td>
+        <td class="year">2016–2020</td>
+      </tr>
+    </table>
+  </section>
+
+  <section id="honors">
+    <h2>Selected Honors</h2>
+    <table class="simple">
+      <tr><td>MathWorks Fellow</td><td class="year">2024</td></tr>
+      <tr><td>Silver Medal, Yao Award</td><td class="year">2019</td></tr>
+      <tr><td>Toyota Scholarship</td><td class="year">2019</td></tr>
+      <tr><td>Star of Baidu Scholarship</td><td class="year">2017, 2018</td></tr>
+      <tr><td>Gold Medal, Chinese Physical Olympiad</td><td class="year">2015</td></tr>
+    </table>
+  </section>
+
+  <section id="service">
+    <h2>Reviewing</h2>
+    <p class="tags">
+      STOC (2023, 2024, 2025) &middot; COLT (2024) &middot; Information and Inference: A Journal of the IMA (2024)
+      &middot; Algorithmica (2024) &middot; ITCS (2026) &middot; ISIT (2023)
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      Reach me at <a href="mailto:chenghao@mit.edu">chenghao@mit.edu</a>, or find more on my
+      <a href="https://sites.mit.edu/chenghao" target="_blank" rel="noopener">MIT page</a> and
+      <a href="https://github.com/calcudimen" target="_blank" rel="noopener">GitHub</a>.
+    </p>
+    <a class="cv-btn" href="assets/Chenghao_Guo_CV.pdf" target="_blank" rel="noopener">Download full CV</a>
+  </section>
+
+  <footer>
+    &copy; <span id="year"></span> Chenghao Guo
+  </footer>
+
+</div>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
